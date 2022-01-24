@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header"></head>
+<body>
+<nav th:replace="layouts :: foo"></nav>
+<div class="container">
+    <h3>Employee Directory</h3>
+    <a th:href="@{/employees/new}"
+       class="btn btn-primary btn-sm mb-3">
+        new employee
+    </a>
+    <br>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th> First name</th>
+            <th> Last name</th>
+            <th> Email Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aEmployee : ${employeeList}"> <!-- aProject is a temp var to refrence objects in list projects -->
+            <td th:text="${aEmployee.firstName}"></td>
+            <td th:text="${aEmployee.lastName}"></td>
+            <td th:text="${aEmployee.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+</div>
+</body>
+</html>

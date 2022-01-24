@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header"></head>
+<body>
+<nav th:replace="layouts :: foo"></nav>  <!-- summon the foo layout from layouts.html -->
+
+    <h4>Current projects</h4>
+    <div>
+    <table>
+        <thead>
+            <tr>
+                <th> Projecct Name</th>
+                <th> Project Stage</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="aProject : ${projectsList}"> <!-- aProject is a temp var to refrence objects in list projects -->
+                <td th:text="${aProject.name}"></td>
+                <td th:text="${aProject.stage}"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th> First name</th>
+                <th> Last name</th>
+                <th> Email Address</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="aEmployee : ${employeeList}"> <!-- aProject is a temp var to refrence objects in list projects -->
+                <td th:text="${aEmployee.firstName}"></td>
+                <td th:text="${aEmployee.lastName}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
