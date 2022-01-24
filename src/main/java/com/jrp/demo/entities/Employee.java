@@ -1,9 +1,6 @@
 package com.jrp.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -14,6 +11,10 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "Project_ID")
+    private Project theProject;
 
     public Employee (){}
     public Employee(String firstName, String lastName, String email) {

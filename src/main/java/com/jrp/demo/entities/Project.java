@@ -1,10 +1,8 @@
 package com.jrp.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 @Entity //to let jpa know to map java objects to database tables
 public class Project {
@@ -18,6 +16,9 @@ public class Project {
     private String stage; // NOTSTARTED, COMPLETED , INPROGRESS
 
     private String description;
+
+    @OneToMany(mappedBy = "theProject")
+    private List<Employee> employees;
 
     public Project(){}
 
