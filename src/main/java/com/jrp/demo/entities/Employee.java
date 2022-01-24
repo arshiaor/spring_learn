@@ -12,9 +12,17 @@ public class Employee {
     private String lastName;
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
     @JoinColumn(name = "Project_ID")
     private Project theProject;
+
+    public Project getTheProject() {
+        return theProject;
+    }
+
+    public void setTheProject(Project theProject) {
+        this.theProject = theProject;
+    }
 
     public Employee (){}
     public Employee(String firstName, String lastName, String email) {
