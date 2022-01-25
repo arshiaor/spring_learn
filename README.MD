@@ -22,4 +22,9 @@ we used @JoinTable in both classes to create a join table for this relationship<
 >we should note JoinColumn and InverseJoinColumns property in both classes <br>
 ###Important note! <br>
 >we do not use an instance of Project in class Employee because the relation is Many-To-many
->so we should use List of Projects, because of this in the projectController.java , the lines with Iterable and for-each Loop is deleted.<br> 
+>so we should use List of Projects, because of this in the projectController.java , the lines with Iterable and for-each Loop is deleted.<br>
+---------
+##version 1.1.2<br>
+we seed database info so that we will not need to create emps and projs everytime we deploy application.<br>
+we use @Bean annotation for using this is ProjectManagementApplication.java <br>
+--------

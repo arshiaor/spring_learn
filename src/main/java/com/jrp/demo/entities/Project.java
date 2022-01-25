@@ -2,6 +2,7 @@ package com.jrp.demo.entities;
 
 import javax.persistence.*;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity //to let jpa know to map java objects to database tables
@@ -70,5 +71,12 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    // convenience method:
+    public void addEmployee(Employee emp) {
+        if(employees==null) {
+            employees = new ArrayList<>();
+        }
+        employees.add(emp);
     }
 }
