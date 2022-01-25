@@ -17,9 +17,9 @@
                 <textarea type="text" placeholder="Enter project Description" th:field="${project.description}"></textarea>
 
                 <select th:field="*{employees}" multiple="multiple"> <!-- *{employees} = ${project.employee}} -->
-                    <option th:each="employee : ${allEmployees}"  <!-- allEmployees comes from projectController -->
+                    <option th:each="employee : ${allEmployees}"
                             th:value="${employee.employeeId}"
-                            th:text="${employee.firstName}">
+                            th:text="${employee.firstName}" > <!-- allEmployees comes from projectController -->
                     </option>
                 </select>
                 <button type="submit">Create Project</button>

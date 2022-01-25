@@ -51,17 +51,13 @@ public class ProjectController {
         proRep.save(project);
 
 
-        Iterable <Employee> chosenEmployees = empRepo.findAllById(employees); //we capture those IDs
-
-        for(Employee emp : chosenEmployees){ // then here we find that foregin key of the involved in the table
-            emp.setTheProject(project);
-            empRepo.save(emp);
-        }
+        //because we use list of projects we do not need the before Iterable and for-each loop
+        proRep.save(project);
 
 
 
         //we always use redirect to prevent duplicate submissions to database
-        return "redirect:/projects/new";
+        return "redirect:/projects";
     }
 
 }

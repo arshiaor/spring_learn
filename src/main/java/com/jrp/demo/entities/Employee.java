@@ -1,27 +1,31 @@
 package com.jrp.demo.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long emloyeeId;
+    private long employeeId;
     private String firstName;
     private String lastName;
     private String email;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
-    @JoinColumn(name = "Project_ID")
-    private Project theProject;
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
+//    @JoinColumn(name = "Project_ID")
+    @JoinTable(name = "project_employee",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Project> Project; //beacuse we use many to many, we need list of projects
 
-    public Project getTheProject() {
-        return theProject;
+    public List<Project> getProject() {
+        return Project;
     }
 
-    public void setTheProject(Project theProject) {
-        this.theProject = theProject;
+    public void setProject(List<Project> project) {
+        this.Project = project;
     }
 
     public Employee (){}
@@ -31,12 +35,12 @@ public class Employee {
         this.email = email;
     }
 
-    public long getEmloyeeId() {
-        return emloyeeId;
+    public long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmloyeeId(long emloyeeId) {
-        this.emloyeeId = emloyeeId;
+    public void setEmployeeId(long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getFirstName() {
