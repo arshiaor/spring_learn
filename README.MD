@@ -38,3 +38,10 @@ In this version we got rid of @Bean and other codes and instead created a data.s
 ####By default, data.sql scripts are now run before Hibernate is initialized. so this cuases errors to solve them put this snippet in Application.properties:
 
 >spring.jpa.defer-datasource-initialization=true
+
+------
+## Version 1.1.3.1 <br>
+we encoutered an error in previous version during creating a new employee because the generation strategy with **GenerationType.AUTO** (in Employee.java)
+creates an employee with primary key starting from 1 but there is already an emp with primary key 1 in data.sql so it creates a conflict. <br>
+To solve this problem we should use **GenerationType.IDENTITY** in the scope. <br>
+By doing this the primary key for new employees will be set by observing tables not by hibernate.<br>
