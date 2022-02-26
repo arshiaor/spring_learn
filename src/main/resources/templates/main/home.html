@@ -38,6 +38,13 @@
 
         <div class="col-md-4">
             <canvas id="myPieChart" height="50" width="50"></canvas>
+
+            <!-- when we are in script tag we cannot use thymeleaf in normal way we should use  two brackets as bellow -->
+            <script>
+                var chartData="[[${projectStatusCnt}]]"
+            </script>
+
+
         </div>
     </div>
     </div>

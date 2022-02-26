@@ -72,3 +72,12 @@ to convert the data to JSON to easily use it in javascript file . to do this,
 we use **ObjectMapper** class from jackson, and use the **objectMapper.writeValueAsString(projectData)** 
 method to do this and then we save it into a String which in my case it's **jsonString** <br>
 After ll these we use **model.addAttributes("project StatusCnt", jsonString)** to send it to javascript file. <br>
+
+
+------
+
+## Version 1.1.4.2 <br>
+in this version we are going to do some javascript coding <br>
+firts of all we should decode the json-like string and then parse it to real json as shown <br>
+> Note ! in the <script> tag we cannot use thymeleaf as before and we should use it with two brackets like : [[${wahtever}]] <br>
+
