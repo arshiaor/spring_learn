@@ -58,3 +58,17 @@ then we make an interface in dto(data transfer object) folder named as **Employe
 
 After making all these changes we go to **Homecontroller.java** and we use **empRepo.employeeProjects()** instead of **empRepo.findAll()** . <br>
  after that we go to **home.html** to edit and replace the email with project count. and it is Done!.<br>
+ 
+ ------
+ 
+## Version 1.1.4.1 <br>
+in this part we want to query the status of the projects<br>
+to do this, we first go to **ProjectRepository.java** to create our own annotation of @Query on the method
+**getprojectStatus()** that contains of a List from **ChartData.java** interface. <br>
+after hat we create our interface in dto folder <br>
+we want to throw the data to the java script pie chart to show <br>
+Then, we go to **HomeController.java** and create a **List<Chartdata>** that is equal to the output of method **empRepo.getprojectStatus()** <br>
+to convert the data to JSON to easily use it in javascript file . to do this,
+we use **ObjectMapper** class from jackson, and use the **objectMapper.writeValueAsString(projectData)** 
+method to do this and then we save it into a String which in my case it's **jsonString** <br>
+After ll these we use **model.addAttributes("project StatusCnt", jsonString)** to send it to javascript file. <br>
