@@ -45,3 +45,16 @@ we encoutered an error in previous version during creating a new employee becaus
 creates an employee with primary key starting from 1 but there is already an emp with primary key 1 in data.sql so it creates a conflict. <br>
 To solve this problem we should use **GenerationType.IDENTITY** in the scope. <br>
 By doing this the primary key for new employees will be set by observing tables not by hibernate.<br>
+
+-----
+## Version 1.1.4 <br>
+In this version we want to add java script pie chart from chartsjs.org and displaye info,First we create javascript file in static/js.<br>
+Then in home.html we used new div to put the chart and used the <script> tag to use the js file.<br>
+After that, we used some bootstrap in home.html to have a beautiful scenery of names and projects and etc<br>
+Then the big changes came ! we wanted to show how manyt projects are the employees involved in. so to do this we should not use **findAll()** method
+in the **EmployeeRepository.java**, so we should insert out own query. To do this we use **@Query()** annotation on the method **employeeProjects()** <br>
+then we make an interface in dto(data transfer object) folder named as **Employeeproject.java** to have the property values of this method (employeeProjects) in it.<br>
+> Note! we should use get with every property in dto interfaces! example: getFirstname(), getAge(),etc <br>
+
+After making all these changes we go to **Homecontroller.java** and we use **empRepo.employeeProjects()** instead of **empRepo.findAll()** . <br>
+ after that we go to **home.html** to edit and replace the email with project count. and it is Done!.<br>

@@ -1,13 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="layouts :: header"></head>
+
 <body>
+
 <nav th:replace="layouts :: foo"></nav>  <!-- summon the foo layout from layouts.html -->
 
-    <h4>Current projects</h4>
-    <div>
-    <table>
-        <thead>
+    <div class="container">
+
+    <h3>Main Dashboard</h3>
+
+        <h4>Current Projects</h4>
+    <div class="row">
+
+    <div class="col-md-6">
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th> Projecct Name</th>
                 <th> Project Stage</th>
@@ -23,23 +35,38 @@
     </table>
     </div>
 
-    <div>
-        <table>
-            <thead>
+
+        <div class="col-md-4">
+            <canvas id="myPieChart" height="50" width="50"></canvas>
+        </div>
+    </div>
+    </div>
+
+        <div class="container">
+        <h4>Current Employee</h4>
+    <div class="row">
+        <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
             <tr>
                 <th> First name</th>
                 <th> Last name</th>
-                <th> Email Address</th>
+                <th> Project Count</th>
             </tr>
             </thead>
 
             <tbody>
-            <tr th:each="aEmployee : ${employeeList}"> <!-- aProject is a temp var to refrence objects in list projects -->
-                <td th:text="${aEmployee.firstName}"></td>
-                <td th:text="${aEmployee.lastName}"></td>
+            <tr th:each="aEmployeeProjectCnt : ${employeesListProjectsCnt}"> <!-- aProject is a temp var to refrence objects in list projects -->
+                <td th:text="${aEmployeeProjectCnt.firstName}"></td>
+                <td th:text="${aEmployeeProjectCnt.lastName}"></td>
+                <td th:text="${aEmployeeProjectCnt.projectCount}"></td> <!-- should look like methods in EmployeeProject.java interface -->
             </tr>
             </tbody>
         </table>
+        </div>
     </div>
+        </div>
+
+    <script type="text/javascript" th:src="@{js/myChart.js}"></script>
 </body>
 </html>

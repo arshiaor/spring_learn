@@ -4,7 +4,7 @@
 <body>
 <nav th:replace="layouts :: foo"></nav>
         <div class="container">
-            <form action="/projects/save" method="post" th:object="${project}"> <!-- object to bind objects to this form (go to project.. controller) -->
+            <form action="/projects/save" method="post" th:object="${project}"> <!-- object is used to bind objects to this form (go to project.. controller) -->
 
                 <input type="text" placeholder="project Name" th:field="${project.name}">
 

@@ -2,7 +2,7 @@ package com.jrp.demo.controllers;
 
 import com.jrp.demo.dao.EmployeeRepository;
 import com.jrp.demo.dao.ProjectRepository;
-import com.jrp.demo.entities.Employee;
+import com.jrp.demo.dto.EmployeeProject;
 import com.jrp.demo.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +24,10 @@ public class HomeController {
     @GetMapping("/")
     public String displayhome(Model model){
         List<Project> projects=proRepo.findAll();
-        List<Employee> employees = empRepo.findAll();
         model.addAttribute("projectsList",projects);
-        model.addAttribute("employeeList",employees);
+
+        List<EmployeeProject> employeesProjectsCnt = empRepo.employeeProjects();
+        model.addAttribute("employeesListProjectsCnt", employeesProjectsCnt);
         return "main/home";
     }
 }
